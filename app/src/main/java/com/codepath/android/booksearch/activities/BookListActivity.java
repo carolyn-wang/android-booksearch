@@ -36,10 +36,10 @@ import okhttp3.Headers;
 
 
 public class BookListActivity extends AppCompatActivity {
-    public RecyclerView rvBooks;
-    public BookAdapter bookAdapter;
-    public BookClient client;
-    public ArrayList<Book> abooks;
+    private RecyclerView rvBooks;
+    private BookAdapter bookAdapter;
+    private BookClient client;
+    private ArrayList<Book> abooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class BookListActivity extends AppCompatActivity {
                     // create intent for the new activity
                     Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
 //                    // serialize the movie using parceler, use its short name as a key
-                    intent.putExtra(book.getTitle(), Parcels.wrap(book));
+                    intent.putExtra(Book.class.getSimpleName(), Parcels.wrap(book));
 //                    // show the activity
                     BookListActivity.this.startActivity(intent);
                 }
