@@ -49,8 +49,8 @@ public class BookDetailActivity extends AppCompatActivity {
         Glide.with(this).load(imageUrl).into(ivBookCover);
 
         // update ActionBar text
-        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
-        getSupportActionBar().setTitle(book.getTitle()); // set the top title
+//        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+//        getSupportActionBar().setTitle(book.getTitle()); // set the top title
 
 
         // Checkpoint #5
