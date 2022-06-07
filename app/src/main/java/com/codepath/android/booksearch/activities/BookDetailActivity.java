@@ -26,6 +26,9 @@ public class BookDetailActivity extends AppCompatActivity {
     String imageUrl;
     Book book;
 
+    private androidx.appcompat.widget.Toolbar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,10 @@ public class BookDetailActivity extends AppCompatActivity {
         // Follow using a Toolbar guide to set the Toolbar as the ActionBar.
         // Change activity title to reflect the book title by referring to the Configuring The ActionBar guide.
         // (Bonus) Get additional book information like publisher and publish_year from the Books API and display in details view.
+
+        //  Set the Toolbar as the ActionBar
+        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
 

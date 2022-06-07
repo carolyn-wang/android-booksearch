@@ -38,6 +38,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".activities.BookListActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -45,7 +46,7 @@
         android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleTextColor="@android:color/white"
+        app:titleTextColor="@android:color/darker_gray"
         android:background="?attr/colorPrimary">
     </androidx.appcompat.widget.Toolbar>
 
