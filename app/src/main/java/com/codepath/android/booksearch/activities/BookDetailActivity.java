@@ -1,6 +1,8 @@
 package com.codepath.android.booksearch.activities;
 
 import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -42,8 +44,14 @@ public class BookDetailActivity extends AppCompatActivity {
 
         tvTitle.setText(book.getTitle());
         tvAuthor.setText(book.getAuthor());
+        // get and set cover image
         imageUrl = book.getCoverUrl();
         Glide.with(this).load(imageUrl).into(ivBookCover);
+
+        // update ActionBar text
+        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+        getSupportActionBar().setTitle(book.getTitle()); // set the top title
+
 
         // Checkpoint #5
         // Reuse the Toolbar previously used in the detailed activity by referring to this guide
