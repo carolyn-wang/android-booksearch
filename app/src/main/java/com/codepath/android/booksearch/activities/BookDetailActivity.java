@@ -8,11 +8,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.codepath.android.booksearch.R;
+import com.codepath.android.booksearch.models.Book;
+
+import org.parceler.Parcels;
+
 
 public class BookDetailActivity extends AppCompatActivity {
-    private ImageView ivBookCover;
-    private TextView tvTitle;
-    private TextView tvAuthor;
+    ImageView ivBookCover;
+    TextView tvTitle;
+    TextView tvAuthor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,8 @@ public class BookDetailActivity extends AppCompatActivity {
         tvAuthor = (TextView) findViewById(R.id.tvAuthor);
 
         // Extract book object from intent extras
+        Book book = (Book) Parcels.unwrap(getIntent().getParcelableExtra(Book.class.getSimpleName()));
+
 
         // Checkpoint #5
         // Reuse the Toolbar previously used in the detailed activity by referring to this guide

@@ -1,6 +1,10 @@
 package com.codepath.android.booksearch.activities;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +27,8 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -30,10 +36,10 @@ import okhttp3.Headers;
 
 
 public class BookListActivity extends AppCompatActivity {
-    private RecyclerView rvBooks;
-    private BookAdapter bookAdapter;
-    private BookClient client;
-    private ArrayList<Book> abooks;
+    public RecyclerView rvBooks;
+    public BookAdapter bookAdapter;
+    public BookClient client;
+    public ArrayList<Book> abooks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +67,18 @@ public class BookListActivity extends AppCompatActivity {
                 // Checkpoint #5
                 // Hook up Book Detail View
                 // see https://guides.codepath.org/android/Using-the-RecyclerView#attaching-click-handlers-using-listeners for setting up click listeners
+                // make sure the position is valid, i.e. actually exists in the view
+                if (position != RecyclerView.NO_POSITION) {
+                    // get the movie at the position, this won't work if the class is static
+                    Book book = abooks.get(position);
+                    Log.i("listAct", book.getTitle());
+                    // create intent for the new activity
+                    Intent intent = new Intent(BookListActivity.this, BookDetailActivity.class);
+//                    // serialize the movie using parceler, use its short name as a key
+                    intent.putExtra(book.getTitle(), Parcels.wrap(book));
+//                    // show the activity
+                    BookListActivity.this.startActivity(intent);
+                }
 
                 // Create Intent to start BookDetailActivity
                 // Get Book at the given position
