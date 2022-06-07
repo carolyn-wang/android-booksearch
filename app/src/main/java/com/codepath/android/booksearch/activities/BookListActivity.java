@@ -69,6 +69,9 @@ public class BookListActivity extends AppCompatActivity {
             }
         });
 
+        // default books placeholder
+        fetchBooks("oscar");
+
         // Attach the adapter to the RecyclerView
         rvBooks.setAdapter(bookAdapter);
 
@@ -117,23 +120,20 @@ public class BookListActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu_book_list, menu);
-
-
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_book_list, menu);
-
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_book_list, menu);
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
 
-//        searchItem.expandActionView();
-//        searchView.requestFocus();
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                // Expand the search view and request focus
+                searchItem.expandActionView();
+                searchView.requestFocus();
+
                 // perform query here
                 fetchBooks(query);
 
